@@ -118,9 +118,9 @@ class ChatPage extends StatelessWidget {
                                 Icons.send,
                                 color: kPrimaryColor,
                               ),
-                              onPressed: () {
+                              onPressed: () async {
                                 cubit.messages.add({
-                                  'message': _onSubmittedValue,
+                                  'message': await Crypt().encrypt(_onSubmittedValue, CryptoKeys.parsePublicKey()),
                                   'createdAt': DateTime.now(),
                                   'id': cubit.email,
                                 }).catchError((e) {
