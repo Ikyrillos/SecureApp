@@ -10,9 +10,6 @@ class ChatLoaded extends ChatState {
   final List<Message> messages;
 
   ChatLoaded({required this.messages});
-
-  // static getter for messages 
-
 }
 
 class ChatError extends ChatState {}

@@ -8,6 +8,8 @@ import 'package:secure/models/menu_items.dart';
 import 'package:secure/presentation/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:secure/utils/crypto.dart';
+import 'package:secure/utils/helpers.dart';
 
 // ignore: must_be_immutable
 class ChatPage extends StatelessWidget {
@@ -87,9 +89,10 @@ class ChatPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: cubit.messageController,
-                        onSubmitted: (value) {
+                        onSubmitted: (value) async {
+                          cubit.emailChanged();
                           cubit.messages.add({
-                            'message': value,
+                            'message': await Crypt().encrypt(value, CryptoKeys.parsePublicKey()),
                             'createdAt': DateTime.now(),
                             'id': cubit.email,
                           }).catchError((e) {

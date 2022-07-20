@@ -1,7 +1,12 @@
 {
-    "cSpell.words": [
-        "firestore",
-        "Flushbar",
-        "screenutil"
-    ]
+  "cSpell.words": [
+    "dycrptor",
+    "dycrypted",
+    "encrypter",
+    "firestore",
+    "Flushbar",
+    "pkcs",
+    "pointycastle",
+    "screenutil"
+  ]
 }
