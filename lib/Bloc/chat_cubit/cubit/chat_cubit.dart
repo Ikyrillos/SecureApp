@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:secure/constants.dart';
 import 'package:secure/models/message.dart';
 import 'package:secure/utils/crypto.dart';
-import 'package:secure/utils/helpers.dart';
 
 part 'chat_state.dart';
 

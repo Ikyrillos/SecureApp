@@ -27,8 +27,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
 
       FirebaseAuth.instance.signOut();
-      Navigator.pop(context);
-      showSnackBar(context, 'Sucessfully registered', true);
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

@@ -18,6 +18,7 @@ Widget defaultFormField({
   bool isPassword = false,
   IconData? suffix,
   Function? suffixPressed,
+  String? hint,
   onTap,
   // bool enabled = true,
   bool readOnly = false,
@@ -36,11 +37,12 @@ Widget defaultFormField({
       // onFieldSubmitted: (S) {
       //   onSubmit!(S);
       // },
-
+      
       onChanged: onChange,
       onTap: onTap,
       decoration: InputDecoration(
         labelText: label,
+        hintText: hint,
         border: const OutlineInputBorder(),
         prefixIcon: Icon(
           prefix,

@@ -4,6 +4,8 @@ import 'package:secure/presentation/components/components.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:secure/presentation/login_and_register/user_details_screen.dart';
+import 'package:secure/presentation/login_and_register/widgets/app_logo.dart';
 
 import 'widgets/login_register_components.dart';
 
@@ -31,26 +33,7 @@ class RegisterForm extends StatelessWidget {
                   const SizedBox(
                     height: 160,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        FontAwesomeIcons.shield,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Secure',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
+                  const AppLogo(),
                   const SizedBox(
                     height: 60,
                   ),
@@ -82,17 +65,23 @@ class RegisterForm extends StatelessWidget {
                     height: 10,
                   ),
                   LoginButton(
-                      label: 'Register',
+                      label: 'Next',
                       onPressed: () async {
                         if (registerCubit.password !=
                             registerCubit.passwordConfirm) {
-                          showSnackBar(
-                              context, 'Passwords do not match', false);
+                          // showSnackBar(
+                          //     context, 'Passwords do not match', false);
                         } else {
                           if (formKey.currentState!.validate()) {
                             try {
                               registerCubit.registerUserWithPassword(context,
                                   registerCubit.email, registerCubit.password);
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return UserDetails(
+                                  userId: registerCubit.email,
+                                );
+                              }));
                             } catch (e) {
                               if (kDebugMode) {
                                 print(e);
